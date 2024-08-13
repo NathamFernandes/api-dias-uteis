@@ -1,8 +1,8 @@
 const express = require('express');
 const axios = require('axios');
-const serverless = require('serverless-http');
+// const serverless = require('serverless-http');
 
-// const PORT = 5000;
+const PORT = 5000;
 
 const app = express();
 const router = express.Router();
@@ -10,7 +10,8 @@ const router = express.Router();
 app.use(express.json()); 
 app.use(express.urlencoded({ extended : false }));
 
-// app.listen(PORT);
+app.listen(PORT);
+
 
 const RNHolidays2024 = [
     {
@@ -122,5 +123,5 @@ router.get('/v1/:year', async (req, res) => {
     });       
 })
 
-app.use('/.netlify/functions/api', router);
-module.exports.handler = serverless(app);
+app.use('/', router);
+// module.exports.handler = serverless(app);
